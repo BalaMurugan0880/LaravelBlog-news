@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.index')
 
 @section('content')
     <div class="container">
@@ -17,7 +17,7 @@
                                     class="help-block">{!! $errors->first('image_url') !!}</span>@endif
                         </div>
 
-                        {!! Form::submit('Create',['class' => 'btn btn-sm btn-primary']) !!}
+                        {!! Form::submit('Upload',['class' => 'btn btn-sm btn-primary']) !!}
                         {!! Form::close() !!}
                     </div>
                 </div>
