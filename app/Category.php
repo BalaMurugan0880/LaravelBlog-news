@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $fillable = ['user_id', 'thumbnail', 'name','maincategory_id', 'slug', 'is_published'];
+    protected $fillable = ['user_id', 'thumbnail', 'name','mainModule_id', 'slug', 'is_published'];
+    
 
     public function user()
     {
@@ -17,6 +18,13 @@ class Category extends Model
     {
         return $this->belongsToMany(Post::class, 'category_posts');
     }
+
+    public function mainModule()
+    {
+        return $this->belongsTo(MainModule::class, 'id');
+    }
+
+
 
 
 }

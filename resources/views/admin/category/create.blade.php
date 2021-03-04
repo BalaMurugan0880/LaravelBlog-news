@@ -9,6 +9,15 @@
 
                     <div class="card-body">
                         {!! Form::open(['route' => 'categories.store']) !!}
+                        <div class="form-group">
+                            {!! Form::label('Main Module') !!}
+                            <select name="mainModule_id" class="form-control">
+                                <option selected>Select A Module</option>
+                                 @foreach($mainModule as $module) 
+                                <option value="{{$module->id}}">{{$module->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="form-group @if($errors->has('thumbnail')) has-error @endif">
                             {!! Form::label('Thumbnail') !!}
                             {!! Form::text('thumbnail', null, ['class' => 'form-control', 'placeholder' => 'Thumbnail']) !!}

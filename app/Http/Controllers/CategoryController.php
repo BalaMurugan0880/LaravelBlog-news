@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -27,7 +28,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        $mainModule = DB::table('mainmodule')->select('mainmodule.name','mainmodule.id')->get();
+        return view('admin.category.create',compact('mainModule'));
     }
 
     /**
@@ -51,6 +53,7 @@ class CategoryController extends Controller
             ]);
 
         $category = new Category();
+        $category->mainModule_id = $request->mainModule_id;
         $category->thumbnail = $request->thumbnail;
         $category->user_id = Auth::id();
         $category->name = $request->name;
@@ -107,6 +110,7 @@ class CategoryController extends Controller
         $category->thumbnail = $request->thumbnail;
         $category->user_id = Auth::id();
         $category->name = $request->name;
+        $category->mainModule_id = $request->mainModule_id;
         $category->slug = str_slug($request->name);
         $category->is_published = $request->is_published;
         $category->save();

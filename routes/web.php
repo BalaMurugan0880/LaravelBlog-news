@@ -22,12 +22,15 @@ Route::get('page/{slug}', 'WebsiteController@page')->name('page');
 Route::get('contact', 'WebsiteController@showContactForm')->name('contact.show');
 Route::post('contact', 'WebsiteController@submitContactForm')->name('contact.submit');
 
+Route::get('posts/get_by_module', 'PostController@get_by_module')->name('admin.category.get_by_module');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('categories', 'CategoryController');
     Route::resource('posts', 'PostController');
     Route::resource('pages', 'PageController');
+    Route::resource('module', 'mainModuleController');	
     Route::resource('galleries', 'GalleryController');
 });
 

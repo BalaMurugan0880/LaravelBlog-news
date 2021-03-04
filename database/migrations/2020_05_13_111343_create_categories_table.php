@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('thumbnail')->nullable();
+            $table->unsignedBigInteger('mainModule_id');
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->enum('is_published', ['1', '0']);

@@ -18,8 +18,8 @@ class Post extends Model
         return $this->belongsToMany(Category::class, 'category_posts');
     }
 
-    public function maincategory()
+    public function mainmodule()
     {
-        return $this->belongsTo(MainCategory::class);
+        return $this->belongsTo(MainModule::class);
     }
 }

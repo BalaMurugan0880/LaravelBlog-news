@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMaincategoryTable extends Migration
+class CreateMainmoduleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateMaincategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('maincategory', function (Blueprint $table) {
+        Schema::create('mainmodule', function (Blueprint $table) {
             $table->id();
-            $table->string('mainCategory')->unique();
+            $table->unsignedBigInteger('user_id');
+            $table->string('name')->unique();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateMaincategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('maincategory');
+        Schema::dropIfExists('mainmodule');
     }
 }

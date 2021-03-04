@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\MainModule;
 use App\Post;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -28,9 +30,12 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categories = Category::orderBy('name', 'ASC')->pluck('name', 'id');
-        return view('admin.post.create', compact('categories'));
+        // $categories = Category::orderBy('name', 'ASC')->pluck('name', 'id');
+        $categories = DB::table('categories')->select('categories.name','categories.id','categories.mainModule_id')->get();
+        $mainModule = DB::table('mainmodule')->select('mainmodule.name','mainmodule.id')->get();
+        return view('admin.post.create', compact('mainModule','categories'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -45,7 +50,7 @@ class PostController extends Controller
             "title" => 'required|unique:posts',
             "details" => "required",
             "category_id" => "required",
-            'maincategory_id' => 'required'
+            'mainModule_id' => 'required'
         ],
             [
                 'thumbnail.required' => 'Enter thumbnail url',
@@ -53,13 +58,14 @@ class PostController extends Controller
                 'title.unique' => 'Title already exist',
                 'details.required' => 'Enter details',
                 'category_id.required' => 'Select categories',
-                'maincategory_id.required' => 'Select A Main Category',
+                'mainModule_id.required' => 'Select A Module',
             ]
         );
 
+
         $post = new  Post();
         $post->user_id = Auth::id();
-        $post->maincategory_id = $request->maincategory_id;
+        $post->mainModule_id = $request->mainModule_id;
         $post->thumbnail = $request->thumbnail;
         $post->title = $request->title;
         $post->slug = str_slug($request->title);
@@ -125,7 +131,6 @@ class PostController extends Controller
         $post->user_id = Auth::id();
         $post->thumbnail = $request->thumbnail;
         $post->title = $request->title;
-        $post->maincategory_id = $request->maincategory_id;
         $post->slug = str_slug($request->title);
         $post->sub_title = $request->sub_title;
         $post->details = $request->details;
@@ -150,5 +155,21 @@ class PostController extends Controller
 
         Session::flash('delete-message', 'Post deleted successfully');
         return redirect()->route('posts.index');
+    }
+
+        public function get_by_module(Request $request)
+    {
+
+        if (!$request->mainModule_id) {
+            $html = '<option value="">'.trans('global.pleaseSelect').'</option>';
+        } else {
+            $html = '';
+            $category = Category::where('mainModule_id', $request->mainModule_id)->get();
+            foreach ($category as $cat) {
+                $html .= '<option value="'.$cat->id.'">'.$cat->name.'</option>';
+            }
+        }
+
+        return response()->json(['html' => $html]);
     }
 }

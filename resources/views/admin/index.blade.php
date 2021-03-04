@@ -15,7 +15,7 @@
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.html">Blog & News</a>
+            <a class="navbar-brand" href="/">Blog & News</a>
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
             <!-- Navbar-->
             <ul class="navbar-nav ml-auto">
@@ -98,6 +98,19 @@
                                 </nav>
                             </div>
 
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseModule" aria-expanded="false" aria-controls="collapseModule">
+                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                                Module
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseModule" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="{{ route('module.create') }}">Add Module</a>
+                                    <a class="nav-link" href="{{ route('module.index') }}">Module Info</a>
+
+                                </nav>
+                            </div>
+
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
@@ -133,5 +146,12 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         @yield('javascript')
+        <script type="text/javascript">
+            $.ajaxSetup({
+   headers: {
+     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+   }
+});
+        </script>
     </body>
 </html>

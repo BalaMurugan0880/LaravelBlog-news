@@ -13,10 +13,6 @@
 
                     <div class="card-body">
                         {!! Form::open(['route' => ['posts.update', $post->id], 'method' => 'put']) !!}
-                        <div class="form-group">
-                            {!! Form::label('Main Category') !!}
-                            {!! Form::select('maincategory_id', [1 => 'News', 2 => 'Blog'], null, ['class' => 'form-control'])!!}
-                        </div>
                         <div class="form-group @if($errors->has('thumbnail')) has-error @endif">
                             {!! Form::label('Thumbnail') !!}
                             {!! Form::text('thumbnail', $post->thumbnail, ['class' => 'form-control', 'placeholder' => 'Thumbnail']) !!}
