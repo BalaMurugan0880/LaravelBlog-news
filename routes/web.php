@@ -32,6 +32,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('pages', 'PageController');
     Route::resource('module', 'mainModuleController');	
     Route::resource('galleries', 'GalleryController');
+    Route::resource('user', 'UserTableController');
 });
 
 

@@ -22,8 +22,6 @@ class CreateCategoriesTable extends Migration
             $table->string('slug')->unique();
             $table->enum('is_published', ['1', '0']);
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

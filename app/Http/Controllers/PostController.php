@@ -164,7 +164,7 @@ class PostController extends Controller
             $html = '<option value="">'.trans('global.pleaseSelect').'</option>';
         } else {
             $html = '';
-            $category = Category::where('mainModule_id', $request->mainModule_id)->get();
+            $category = Category::where('mainModule_id', $request->mainModule_id)->where(['is_published' => 1])->get();
             foreach ($category as $cat) {
                 $html .= '<option value="'.$cat->id.'">'.$cat->name.'</option>';
             }

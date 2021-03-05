@@ -9,6 +9,10 @@
 
                     <div class="card-body">
                         {!! Form::open(['route' => ['categories.update', $category->id], 'method' => 'put']) !!}
+                        <div class="form-group">
+                             {!! Form::hidden('mainModule_id', $category->mainModule_id, ['class' => 'form-control', 'placeholder' => 'Module']) !!}
+                        </div>
+
                         <div class="form-group @if($errors->has('thumbnail')) has-error @endif">
                             {!! Form::label('Thumbnail') !!}
                             {!! Form::text('thumbnail', $category->thumbnail, ['class' => 'form-control', 'placeholder' => 'Thumbnail']) !!}

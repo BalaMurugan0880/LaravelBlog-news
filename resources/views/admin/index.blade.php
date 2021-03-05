@@ -80,9 +80,8 @@
                             </a>
                             <div class="collapse" id="collapseUser" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">Add Users</a>
-                                    <a class="nav-link" href="#">Users Info</a>
-                                    <a class="nav-link" href="#">Permissions</a>
+                                    <a class="nav-link" href="{{route('register')}}">Add Users</a>
+                                    <a class="nav-link" href="{{route('user.index')}}">Users Info</a>
                                 </nav>
                             </div>
 
@@ -146,12 +145,6 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         @yield('javascript')
-        <script type="text/javascript">
-            $.ajaxSetup({
-   headers: {
-     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-   }
-});
-        </script>
+       
     </body>
 </html>
