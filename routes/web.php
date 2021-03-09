@@ -25,7 +25,8 @@ Route::post('contact', 'WebsiteController@submitContactForm')->name('contact.sub
 Route::get('posts/get_by_module', 'PostController@get_by_module')->name('admin.category.get_by_module');
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::post('/post/upload_ckeditor', 'PostController@upload_ckeditor')->name('upload');
+Route::get('admin/post/file_browser', 'PostController@file_browser');
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('categories', 'CategoryController');
     Route::resource('posts', 'PostController');

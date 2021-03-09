@@ -72,6 +72,7 @@
                                     <a class="nav-link" href="{{ route('categories.index') }}">Category Info</a>
                                 </nav>
                             </div>
+                             @if(Auth::user()->role == 'Admin')
 
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="false" aria-controls="collapseUser">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
@@ -84,6 +85,9 @@
                                     <a class="nav-link" href="{{route('user.index')}}">Users Info</a>
                                 </nav>
                             </div>
+                            @else
+
+                            @endif
 
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedia" aria-expanded="false" aria-controls="collapseMedia">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
@@ -96,7 +100,7 @@
                                     <a class="nav-link" href="{{ route('galleries.index') }}">Image Url</a>
                                 </nav>
                             </div>
-
+                            @if(Auth::user()->role == 'Admin')
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseModule" aria-expanded="false" aria-controls="collapseModule">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 Module
@@ -109,6 +113,9 @@
 
                                 </nav>
                             </div>
+                            @else
+
+                            @endif
 
                         </div>
                     </div>

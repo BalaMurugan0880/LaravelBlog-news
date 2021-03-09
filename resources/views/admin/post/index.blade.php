@@ -48,11 +48,11 @@
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->user->name }}</td>
                                         <td>
-                                            <a href="{{ route('posts.edit', $post->id) }}"
-                                               class="btn btn-sm btn-primary">Edit</a>
+                                            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-primary">Edit</a>
                                             {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'delete', 'style' => 'display:inline']) !!}
                                             {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger']) !!}
                                             {!! Form::close() !!}
+                                            
                                         </td>
                                     </tr>
                                 @endforeach

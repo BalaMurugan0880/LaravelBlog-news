@@ -23,6 +23,54 @@ class PostController extends Controller
         return view('admin.post.index', compact('posts'));
     }
 
+     public function upload_ckeditor(Request $request)
+    {
+        if($request->hasFile('upload')) {
+            //get filename with extension
+            $filenamewithextension = $request->file('upload')->getClientOriginalName();
+      
+            //get filename without extension
+            $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+      
+            //get file extension
+            $extension = $request->file('upload')->getClientOriginalExtension();
+      
+            //filename to store
+            $filenametostore = $filename.'_'.time().'.'.$extension;
+      
+            //Upload File
+            $request->file('upload')->storeAs('public/galleries/', $filenametostore);
+ 
+            $CKEditorFuncNum = $request->input('CKEditorFuncNum');
+            $url = asset('storage/galleries/'.$filenametostore);
+            $msg = 'Image successfully uploaded';
+            $re = "<script>window.parent.CKEDITOR.tools.callFunction($CKEditorFuncNum, '$url', '$msg')</script>";
+             
+            // Render HTML output
+            @header('Content-type: text/html; charset=utf-8');
+            echo $re;
+        }
+
+    }
+
+
+     public function file_browser()
+    {
+        $paths = glob(public_path('storage/galleries/*'));
+        $fileNames = array();
+        foreach ($paths as $path) {
+            array_push($fileNames, basename($path));
+
+        }
+        $data = array(
+            'fileNames' => $fileNames
+        );
+
+        return view('admin/post/file_browser')->with($data);
+
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

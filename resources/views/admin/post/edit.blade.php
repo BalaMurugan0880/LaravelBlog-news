@@ -48,11 +48,17 @@
                                 <span class="help-block">{!! $errors->first('category_id') !!}</span>
                             @endif
                         </div>
-
+                        @if(Auth::user()->role == 'Writer')
+                        <div class="form-group">
+                            {!! Form::label('Publish') !!}
+                            {!! Form::select('is_published', [ 0 => 'Draft'], null, ['class' => 'form-control']) !!}
+                        </div>
+                        @else
                         <div class="form-group">
                             {!! Form::label('Publish') !!}
                             {!! Form::select('is_published', [1 => 'Publish', 0 => 'Draft'], null, ['class' => 'form-control']) !!}
                         </div>
+                        @endif
 
                         {!! Form::submit('Update',['class' => 'btn btn-sm btn-warning']) !!}
                         {!! Form::close() !!}
@@ -77,5 +83,11 @@
                 placeholder: "Select categories"
             }).val({!! json_encode($post->categories()->allRelatedIds()) !!}).trigger('change');
         });
-    </script>
+        CKEDITOR.replace( 'details', {
+            filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form',
+            filebrowserBrowseUrl: '{{ asset('admin/post/file_browser') }}',
+             
+        });
+            </script>
 @endsection
