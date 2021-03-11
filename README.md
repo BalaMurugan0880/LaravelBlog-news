@@ -26,13 +26,19 @@ $ php artisan migrate
 $ php artisan db:seed
 ```
 
-## Use storate images
+## Use storage images
 ```
 $ php artisan storage:link
 ```
 
-## Mail setup 
+## Mail setup for gmail
 ```
-visit at : https://mailtrap.io/
-put mail credentials in .env file
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com //if you are using gmail
+MAIL_PORT=25
+MAIL_USERNAME= //Your gmail
+MAIL_PASSWORD= //Your pass
+MAIL_FROM_ADDRESS= //Your Gmail
+MAIL_FROM_NAME="${APP_NAME}"
+MAIL_ENCRYPTION=tls
 ```
