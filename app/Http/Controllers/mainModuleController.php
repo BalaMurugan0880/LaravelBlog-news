@@ -19,6 +19,7 @@ class mainModuleController extends Controller
     {
        $mainModule = MainModule::orderBy('id', 'DESC')->get();
         return view('admin.module.index', compact('mainModule'));
+        
     }
 
     /**
@@ -75,9 +76,9 @@ class mainModuleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(MainModule $module)
     {
-        //
+        return view('admin.module.edit', compact('module'));
     }
 
     /**
@@ -87,9 +88,23 @@ class mainModuleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+     public function update(Request $request, MainModule $module)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|unique:mainmodule,name,' . $module->id,
+        ],
+            [
+                'name.required' => 'Enter name',
+                'name.unique' => 'Category already exist',
+            ]);
+
+      
+        $module->user_id = Auth::id();
+        $module->name = $request->name;
+        $module->save();
+
+        Session::flash('message', 'Module updated successfully');
+        return redirect()->route('module.index');
     }
 
     /**

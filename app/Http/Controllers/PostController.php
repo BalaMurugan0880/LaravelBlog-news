@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
+
 class PostController extends Controller
 {
     /**
@@ -18,8 +19,11 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+
     {
+        
         $posts = Post::orderBy('id', 'DESC')->where('post_type', 'post')->get();
+        
         return view('admin.post.index', compact('posts'));
     }
 

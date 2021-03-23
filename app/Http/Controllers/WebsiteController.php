@@ -8,11 +8,32 @@ use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
-
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+use Artesaos\SEOTools\Facades\TwitterCard;
+use Artesaos\SEOTools\Facades\JsonLd;
 class WebsiteController extends Controller
 {
     public function index()
     {
+        SEOMeta::setTitle('HackTheStuff - Homepage');
+        SEOMeta::setDescription('One destination for all stuff');
+        SEOMeta::setCanonical('https://www.bac.edu.my/');
+
+        OpenGraph::setDescription('One destination for all stuff');
+        OpenGraph::setTitle('HackTheStuff - Homepage');
+        OpenGraph::setUrl('https://www.bac.edu.my/');
+        OpenGraph::addProperty('type', 'articles');
+
+        TwitterCard::setTitle('HackTheStuff - Homepage');
+        TwitterCard::setSite('@HackTheStuff');
+
+
+        JsonLd::setTitle('HackTheStuff - Homepage');
+        JsonLd::setDescription('One destination for all stuff');
+        JsonLd::addImage('https://www.bac.edu.my/wp-content/uploads/2018/10/b4l.png');
+        
+
         $categories = Category::orderBy('name', 'ASC')->where('is_published', '1')->get();
         $posts = Post::orderBy('id', 'DESC')->where('post_type', 'post')->where('is_published', '1')->paginate(5);
         return view('website.index', compact('posts', 'categories'));
@@ -22,6 +43,25 @@ class WebsiteController extends Controller
     {
         $post = Post::where('slug', $slug)->where('post_type', 'post')->where('is_published', '1')->first();
         if ($post) {
+
+        SEOMeta::setTitle($post->title);
+        SEOMeta::setDescription($post->details);
+        SEOMeta::addMeta('post:published_time', $post->created_at->toW3CString(), 'property');
+        SEOMeta::addKeyword($post->sub_title);
+
+        OpenGraph::setDescription($post->details);
+        OpenGraph::setTitle($post->title);
+        OpenGraph::setUrl('http://127.0.0.1:8000/post/'.$post->slug);
+        OpenGraph::addProperty('type', 'post');
+        OpenGraph::addProperty('locale', 'en-US');
+        OpenGraph::addImage($post->thumbnail);
+        
+        JsonLd::setTitle($post->title);
+        JsonLd::setDescription($post->details);
+        JsonLd::setType('Article');
+        JsonLd::addImage($post->thumbnail);
+
+
             return view('website.post', compact('post'));
         } else {
             return \Response::view('website.errors.404', array(), 404);

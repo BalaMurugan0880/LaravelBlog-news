@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+
+Route::apiResource('contacts', 'ContactController');
+
+ Route::apiResource('categories', 'CategoryController');
+    Route::apiResource('posts', 'PostController');
+    Route::apiResource('pages', 'PageController');
+    Route::apiResource('module', 'mainModuleController');	
+    Route::apiResource('galleries', 'GalleryController');
+    Route::apiResource('user', 'UserTableController');
+

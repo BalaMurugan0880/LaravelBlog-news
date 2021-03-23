@@ -155,3 +155,10 @@
        
     </body>
 </html>
+<?php 
+
+use MadeITBelgium\SeoAnalyzer\SeoFacade as SEO;
+$html = "<html>....</html>";
+SEO::analyze('https://www.madeit.be', $html);
+?>
+

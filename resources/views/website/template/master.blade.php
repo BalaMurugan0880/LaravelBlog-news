@@ -5,8 +5,10 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    {!! SEOMeta::generate() !!}
+        {!! OpenGraph::generate() !!}
+        {!! Twitter::generate() !!}
+        {!! JsonLd::generate() !!}
 
     <title>BAC BLOG & NEWS</title>
 
@@ -132,6 +134,8 @@
 
 <!-- Custom scripts for this template -->
 <script src="{{ asset('website/js/clean-blog.min.js') }}"></script>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6059529640e75a11"></script>
 
 </body>
 

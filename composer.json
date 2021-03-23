@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2.5|^7.4|^8.0",
         "alexusmai/laravel-file-manager": "^2.5",
+        "artesaos/seotools": "^0.20.0",
         "calcinai/php-imagick": "^0.1.2",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
@@ -17,7 +18,8 @@
         "laravel/framework": "^7.0",
         "laravel/helpers": "^1.2",
         "laravel/tinker": "^2.0",
-        "laravelcollective/html": "^6.1"
+        "laravelcollective/html": "^6.1",
+        "madeitbelgium/seo-analyzer": "^0.6"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
