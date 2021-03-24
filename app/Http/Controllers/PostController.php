@@ -21,7 +21,7 @@ class PostController extends Controller
     public function index()
 
     {
-        
+
         $posts = Post::orderBy('id', 'DESC')->where('post_type', 'post')->get();
         
         return view('admin.post.index', compact('posts'));
@@ -126,6 +126,8 @@ class PostController extends Controller
         $post->is_published = $request->is_published;
         $post->post_type = 'post';
         $post->save();
+
+        
 
         $post->categories()->sync($request->category_id, false);
 

@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\API\ProjectController;
+Use App\Post;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,15 +14,18 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+// Route::get('post', function() {
+//     // If the Content-Type and Accept headers are set to 'application/json', 
+//     // this will return a JSON structure. This will be cleaned up later.
+//     return Post::all();
+// });
 
 
-
-Route::apiResource('contacts', 'ContactController');
-
- Route::apiResource('categories', 'CategoryController');
-    Route::apiResource('posts', 'PostController');
-    Route::apiResource('pages', 'PageController');
-    Route::apiResource('module', 'mainModuleController');	
-    Route::apiResource('galleries', 'GalleryController');
-    Route::apiResource('user', 'UserTableController');
+	// Route::apiResource('contacts', 'ContactController');
+ // 	Route::apiResource('categories', 'CategoryController');
+    Route::apiResource('posts', 'ProjectController');
+ //    Route::apiResource('pages', 'PageController');
+ //    Route::apiResource('module', 'mainModuleController');	
+ //    Route::apiResource('galleries', 'GalleryController');
+ //    Route::apiResource('user', 'UserTableController');
 
