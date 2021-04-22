@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Category;
+use App\CategoryPost;
 use Illuminate\Http\Request;
 use App\Http\Resources\ProjectResource;
+use DB;
 class ProjectController extends Controller
 {
     /**
@@ -14,9 +17,17 @@ class ProjectController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $post = Post::orderBy('id', 'DESC')->where('post_type', 'post')->where('is_published', '1')->paginate(5);
-        return response([ 'post' => ProjectResource::collection($post), 'message' => 'Retrieved successfully'], 200);
+    {   
+        $post = Post::orderBy('id', 'DESC')->where('post_type', 'post')->where('is_published', '1')->get();
+        $category = Category::orderBy('id', 'DESC')->where('is_published', '1')->get();
+        $categorypost = CategoryPost::orderBy('id', 'DESC')->get();
+        
+
+ 
+
+
+        return response([ 'post' => ProjectResource::collection($post),'category' => ProjectResource::collection($category),'categorypost' => ProjectResource::collection($categorypost), 'message' => 'Retrieved successfully'], 200);
+        
     }
 
     /**
@@ -38,7 +49,7 @@ class ProjectController extends Controller
      */
    public function show(Post $post)
     {
-        return response(['post' => new ProjectResource($post), 'message' => 'Retrieved successfully'], 200);
+        // return response(['post' => new ProjectResource($post), 'message' => 'Retrieved successfully'], 200);
     }
 
     /**

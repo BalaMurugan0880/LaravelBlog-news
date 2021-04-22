@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\VisitorContact;
 use App\Post;
 use App\Category;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -16,27 +17,29 @@ class WebsiteController extends Controller
 {
     public function index()
     {
-        SEOMeta::setTitle('HackTheStuff - Homepage');
+        SEOMeta::setTitle('BAC Blog & News');
         SEOMeta::setDescription('One destination for all stuff');
         SEOMeta::setCanonical('https://www.bac.edu.my/');
 
         OpenGraph::setDescription('One destination for all stuff');
-        OpenGraph::setTitle('HackTheStuff - Homepage');
+        OpenGraph::setTitle('BAC Blog & News');
         OpenGraph::setUrl('https://www.bac.edu.my/');
         OpenGraph::addProperty('type', 'articles');
 
-        TwitterCard::setTitle('HackTheStuff - Homepage');
-        TwitterCard::setSite('@HackTheStuff');
+        TwitterCard::setTitle('BAC Blog & News');
+        TwitterCard::setSite('@BAC');
 
 
-        JsonLd::setTitle('HackTheStuff - Homepage');
+        JsonLd::setTitle('BAC Blog & News');
         JsonLd::setDescription('One destination for all stuff');
         JsonLd::addImage('https://www.bac.edu.my/wp-content/uploads/2018/10/b4l.png');
         
 
         $categories = Category::orderBy('name', 'ASC')->where('is_published', '1')->get();
         $posts = Post::orderBy('id', 'DESC')->where('post_type', 'post')->where('is_published', '1')->paginate(5);
-        return view('website.index', compact('posts', 'categories'));
+        $mostpopular = Post::get()->sortByDesc('views')->take(3);
+        $recentpost = Post::get()->sortByDesc('created_at')->take(3);
+        return view('website.index', compact('posts', 'categories','mostpopular','recentpost'));
     }
 
     public function post($slug)
@@ -61,6 +64,7 @@ class WebsiteController extends Controller
         JsonLd::setType('Article');
         JsonLd::addImage($post->thumbnail);
 
+            DB::table('posts')->where('slug', $slug)->increment('views');
 
             return view('website.post', compact('post'));
         } else {

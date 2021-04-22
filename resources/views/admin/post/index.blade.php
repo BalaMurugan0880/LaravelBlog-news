@@ -1,5 +1,6 @@
 @extends('admin.index')
 
+
 @section('content')
     <div class="container">
         <div class="row">
@@ -30,12 +31,13 @@
                     </div>
 
                     <div class="card-body">
-                        <div class="table-responsive">
+                        <div class="table-responsive ">
                             <table class="table table-bordered mb-0">
                                 <thead>
                                 <tr>
                                     <th scope="col" width="60">#</th>
                                     <th scope="col">Title</th>
+                                    <th scope="col">Viewers</th>
                                     <th scope="col" width="200">Created By</th>
                                     <th scope="col" width="129">Action</th>
                                 </tr>
@@ -46,6 +48,7 @@
                                     <tr>
                                         <td>{{ $post->id }}</td>
                                         <td>{{ $post->title }}</td>
+                                        <td><i class="fa fa-eye"></i>&nbsp;{{ $post->views }} Viewers</td>
                                         <td>{{ $post->user->name }}</td>
                                         <td>
                                             <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-primary">Edit</a>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<online_web_tutor_course>
+  <course>
+    <name>WordPress Theme Development</name>
+    <price>Free</price>
+    <category>WordPress</category>
+    <videos>35</videos>
+  </course>
+  <course>
+    <name>WordPress Plugin Development</name>
+    <price>Free</price>
+    <category>WordPress</category>
+    <videos>50</videos>
+  </course>
+  <course>
+    <name>Node Js with Sequelize ORM</name>
+    <price>$10</price>
+    <category>NodeJs</category>
+    <videos>89</videos>
+  </course>
+  <course>
+    <name>CakePHP 4.x Admin Panel development</name>
+    <price>$9</price>
+    <category>CakePHP 4</category>
+    <videos>79</videos>
+  </course>
+</online_web_tutor_course>

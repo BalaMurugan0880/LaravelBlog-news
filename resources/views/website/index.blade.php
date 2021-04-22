@@ -39,17 +39,17 @@
                                     @foreach($post->categories as $category)
                                         <a href="{{ url('category/' . $category->slug) }}"><span class="badge badge-primary">{{ $category->name }}</span></a>,
                                     @endforeach
-                        </span>
-                            @endif
+                        </span>  
+                            @endif | &nbsp;<i class="fa fa-eye"></i>&nbsp;<span>{{ $post->views}} Viewers</span>
                         </p>
                     </div>
                     <hr>
             @endforeach
 
             <!-- Pager -->
-                <div class="clearfix mt-4">
+               {{--  <div class="clearfix mt-4">
                     {{ $posts->links() }}
-                </div>
+                </div> --}}
             </div>
 
             <div class="col-lg-4 col-md-4">
@@ -61,7 +61,32 @@
                         @endforeach
                     </ul>
                 </div>
+                <div class="mostpopular">
+                    <h2 class="category-title">Most Popular</h2>
+                     <ul class="category-list">
+                        @foreach($mostpopular as $popular)
+                            <li>
+                                <a href="{{ url('post/' . $popular->slug) }}">{{ $popular->title }} <h3 class="most-popular">{{ $popular->sub_title }}| &nbsp;<i class="fa fa-eye"></i>&nbsp;{{ $popular->views}}</h3>  </a>
+                                
+
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="mostrecent">
+                     <h2 class="category-title">Recent Post</h2>
+                     <ul class="category-list">
+                        @foreach($recentpost as $recent)
+                            <li>
+                                <a href="{{ url('post/' . $recent->slug) }}">{{ $recent->title }} <h3 class="most-popular">{{ $recent->sub_title }}| &nbsp;<i class="fa fa-eye"></i>&nbsp;{{ $recent->views}}</h3>  </a>
+                                
+
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
+
         </div>
     </div>
 @endsection()

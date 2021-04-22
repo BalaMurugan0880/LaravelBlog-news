@@ -58,23 +58,6 @@ class PostController extends Controller
     }
 
 
-     public function file_browser()
-    {
-        $paths = glob(public_path('storage/galleries/*'));
-        $fileNames = array();
-        foreach ($paths as $path) {
-            array_push($fileNames, basename($path));
-
-        }
-        $data = array(
-            'fileNames' => $fileNames
-        );
-
-        return view('admin/post/file_browser')->with($data);
-
-    }
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -169,7 +152,7 @@ class PostController extends Controller
     {
         $this->validate($request, [
             "thumbnail" => 'required',
-            'title' => 'required|unique:posts,title,' . $post->id . ',id', // ignore this id
+            'title' => 'required|unique:posts,title,' . $post->id . ',id',
             'details' => 'required',
             "category_id" => "required"
         ],
@@ -220,7 +203,7 @@ class PostController extends Controller
             $html = '';
             $category = Category::where('mainModule_id', $request->mainModule_id)->where(['is_published' => 1])->get();
             foreach ($category as $cat) {
-                $html .= '<option value="'.$cat->id.'">'.$cat->name.'</option>';
+                $html .= '<option value="'.$cat->id.'" style="color:#000 !important;">'.$cat->name.'</option>';
             }
         }
 

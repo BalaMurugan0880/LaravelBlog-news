@@ -118,6 +118,6 @@ class mainModuleController extends Controller
          DB::delete('delete from mainmodule where id = ?',[$id]);
 
         Session::flash('delete-message', 'Module deleted successfully');
-        return redirect()->route('module.index');   
+        return redirect()->route('module.index'); 
     }
 }

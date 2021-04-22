@@ -27,13 +27,19 @@ class UserTableController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-       $id = Auth::user()->id;
+    // public function create()
+    // {
+    //    $id = Auth::user()->id;
 
-       $users = DB::table('users')->select('id','name','email','role')->where(['users.id' => $id])->get();
-       return view('admin.user.edit',compact('users'));
+    //    $users = DB::table('users')->select('id','name','email','role')->where(['users.id' => $id])->get();
+    //    return view('admin.user.edit',compact('users'));
 
+    // }
+
+    public function profile(){
+        $user_id = Auth::id();
+        $users = DB::table('users')->select('name','email','role')->where('id', $user_id)->first();
+        return view('admin.user.profile');
     }
 
     /**

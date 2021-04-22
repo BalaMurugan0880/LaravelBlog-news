@@ -12,6 +12,9 @@
         <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
         @yield('stylesheet')
+        <style type="text/css">
+           
+        </style>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -23,7 +26,7 @@
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="/"><i class="fas fa-home"></i> Home</a>
-                        <a class="dropdown-item" href="home"><i class="fas fa-tachometer-alt"></i> DashBoard</a>
+                        <a class="dropdown-item" href="/home"><i class="fas fa-tachometer-alt"></i> DashBoard</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
@@ -47,6 +50,10 @@
                             <a class="nav-link" href="/home">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
+                            </a>
+                            <a class="nav-link" href="/admin/user/profile">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Profile
                             </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePost" aria-expanded="false" aria-controls="collapsePost">
@@ -89,17 +96,6 @@
 
                             @endif
 
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMedia" aria-expanded="false" aria-controls="collapseMedia">
-                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
-                                Media
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseMedia" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="{{ route('galleries.create') }}">Upload Image</a>
-                                    <a class="nav-link" href="{{ route('galleries.index') }}">Image Url</a>
-                                </nav>
-                            </div>
                             @if(Auth::user()->role == 'Admin')
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseModule" aria-expanded="false" aria-controls="collapseModule">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
@@ -138,7 +134,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                            <div class="text-muted">Copyright &copy; BAC Education 2021</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;
@@ -152,6 +148,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         @yield('javascript')
+        
        
     </body>
 </html>

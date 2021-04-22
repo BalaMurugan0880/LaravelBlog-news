@@ -26,7 +26,7 @@
 
                         <div class="form-group">
                             {!! Form::label('Module') !!}
-                            <select name="mainModule_id" id="module" class="form-control">
+                            <select name="mainModule_id" id="module" class="form-control ">
                                 <option selected>Select A Module</option>
                                  @foreach($mainModule as $module) 
                                 <option value="{{$module->id}}">{{$module->name}}</option>
@@ -38,7 +38,7 @@
                            {!! Form::label('Category') !!}
                            {{--   {!! Form::select('category_id[]', $categories, null, ['class' => 'form-control', 'id' => 'category_id', 'multiple' => 'multiple']) !!} --}}
 
-                             <select class="selectpicker form-control" id="category_id" name="category_id[]" multiple>
+                             <select class="selectpicker form-control" style="color: #000 !important;" id="category_id" name="category_id[]" multiple>
                                   <option value=""></option>
                             </select>
                         </div>       
@@ -48,7 +48,7 @@
                                 <input type="text" id="image_label" class="form-control" name="thumbnail"
                                        aria-label="Image" aria-describedby="button-image" placeholder="Select Or Upload A Image">
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="button" id="button-image">Select</button>
+                                    <button class="btn btnclr" type="button" id="button-image">Select</button>
                                 </div>
                             </div>
                         </div>

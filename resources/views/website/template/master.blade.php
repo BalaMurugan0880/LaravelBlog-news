@@ -55,6 +55,11 @@
         .post-category a {
             text-decoration: none;
         }
+
+        .most-popular{
+            font-size: 12px;
+            font-weight: normal;
+        }
     </style>
 </head>
 

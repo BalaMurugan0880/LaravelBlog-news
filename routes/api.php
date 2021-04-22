@@ -23,7 +23,7 @@ Use App\Post;
 
 	// Route::apiResource('contacts', 'ContactController');
  // 	Route::apiResource('categories', 'CategoryController');
-    Route::apiResource('posts', 'ProjectController');
+    Route::apiResource('posts', 'ProjectController', array("as" => "api"));
  //    Route::apiResource('pages', 'PageController');
  //    Route::apiResource('module', 'mainModuleController');	
  //    Route::apiResource('galleries', 'GalleryController');
