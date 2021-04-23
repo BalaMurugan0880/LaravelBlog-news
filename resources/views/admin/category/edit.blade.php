@@ -31,11 +31,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group @if($errors->has('name')) has-error @endif">
+                        <div class="form-group @if($errors->has('category_name')) has-error @endif">
                             {!! Form::label('Name') !!}
-                            {!! Form::text('name', $category->name, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
-                            @if ($errors->has('name'))
-                                <span class="help-block">{!! $errors->first('name') !!}</span>@endif
+                            {!! Form::text('category_name', $category->category_name, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
+                            @if ($errors->has('category_name'))
+                                <span class="help-block">{!! $errors->first('category_name') !!}</span>@endif
                         </div>
 
                         <div class="form-group">

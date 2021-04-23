@@ -66,8 +66,8 @@ class PostController extends Controller
     public function create()
     {
         // $categories = Category::orderBy('name', 'ASC')->pluck('name', 'id');
-        $categories = DB::table('categories')->select('categories.name','categories.id','categories.mainModule_id')->get();
-        $mainModule = DB::table('mainmodule')->select('mainmodule.name','mainmodule.id')->get();
+        $categories = DB::table('categories')->select('categories.category_name','categories.id','categories.mainModule_id')->get();
+        $mainModule = DB::table('mainmodule')->select('mainmodule.module_name','mainmodule.id')->get();
         return view('admin.post.create', compact('mainModule','categories'));
     }
 
@@ -137,7 +137,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        $categories = Category::orderBy('name', 'ASC')->pluck('name', 'id');
+        $categories = Category::orderBy('category_name', 'ASC')->pluck('category_name', 'id');
         return view('admin.post.edit', compact('categories', 'post'));
     }
 
@@ -203,7 +203,7 @@ class PostController extends Controller
             $html = '';
             $category = Category::where('mainModule_id', $request->mainModule_id)->where(['is_published' => 1])->get();
             foreach ($category as $cat) {
-                $html .= '<option value="'.$cat->id.'" style="color:#000 !important;">'.$cat->name.'</option>';
+                $html .= '<option value="'.$cat->id.'" style="color:#000 !important;">'.$cat->category_name.'</option>';
             }
         }
 

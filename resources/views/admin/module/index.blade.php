@@ -45,7 +45,7 @@
                                 @foreach($mainModule as $module)
                                     <tr>
                                         <td>{{ $module->id }}</td>
-                                        <td>{{ $module->name }}</td>
+                                        <td>{{ $module->module_name }}</td>
                                         <td>{{ $module->user->name }}</td>
                                         <td>
                                             <a href="{{ route('module.edit', $module->id) }}"

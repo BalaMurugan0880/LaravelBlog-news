@@ -91,7 +91,7 @@
 
 @section('javascript')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.min.js" crossorigin="anonymous"></script>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
 	var ctx = document.getElementById("myChart");
 
 
@@ -149,6 +149,6 @@ var mylineChart = new Chart(ctx, {
     }
 });
 
-</script>
+</script> --}}
 
 @endsection

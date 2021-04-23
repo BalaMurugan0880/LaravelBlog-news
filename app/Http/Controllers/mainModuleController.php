@@ -41,17 +41,17 @@ class mainModuleController extends Controller
     public function store(Request $request)
     {
       $this->validate($request, [
-            'name' => 'required|unique:mainmodule',
+            'module_name' => 'required|unique:mainmodule',
             
         ],
             [
-                'name.required' => 'Enter name',
-                'name.unique' => 'Main Module already exist',
+                'module_name.required' => 'Enter name',
+                'module_name.unique' => 'Main Module already exist',
                 
             ]);
 
         $mainModule = new MainModule();
-        $mainModule->name = $request->name;
+        $mainModule->module_name = $request->module_name;
         $mainModule->user_id = Auth::id();
         $mainModule->save();
 
@@ -91,16 +91,16 @@ class mainModuleController extends Controller
      public function update(Request $request, MainModule $module)
     {
         $this->validate($request, [
-            'name' => 'required|unique:mainmodule,name,' . $module->id,
+            'module_name' => 'required|unique:mainmodule,module_name,' . $module->id,
         ],
             [
-                'name.required' => 'Enter name',
-                'name.unique' => 'Category already exist',
+                'module_name.required' => 'Enter name',
+                'module_name.unique' => 'Category already exist',
             ]);
 
       
         $module->user_id = Auth::id();
-        $module->name = $request->name;
+        $module->module_name = $request->module_name;
         $module->save();
 
         Session::flash('message', 'Module updated successfully');

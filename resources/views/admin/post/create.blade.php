@@ -29,7 +29,7 @@
                             <select name="mainModule_id" id="module" class="form-control ">
                                 <option selected>Select A Module</option>
                                  @foreach($mainModule as $module) 
-                                <option value="{{$module->id}}">{{$module->name}}</option>
+                                <option value="{{$module->id}}">{{$module->module_name}}</option>
                                 @endforeach
                             </select>
                         </div>

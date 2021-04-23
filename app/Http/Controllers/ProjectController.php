@@ -21,12 +21,13 @@ class ProjectController extends Controller
         $post = Post::orderBy('id', 'DESC')->where('post_type', 'post')->where('is_published', '1')->get();
         $category = Category::orderBy('id', 'DESC')->where('is_published', '1')->get();
         $categorypost = CategoryPost::orderBy('id', 'DESC')->get();
-        
 
- 
+        $test = DB::table('posts')->join('category_posts','category_posts.post_id', '=', 'posts.id')->join('categories','category_posts.category_id', '=', 'categories.id')->join('mainmodule','categories.mainModule_id', '=' , 'mainmodule.id')->select('posts.title','categories.category_name','category_posts.category_id','mainmodule.module_name')->get();
 
 
-        return response([ 'post' => ProjectResource::collection($post),'category' => ProjectResource::collection($category),'categorypost' => ProjectResource::collection($categorypost), 'message' => 'Retrieved successfully'], 200);
+
+
+        return response(['test' => $test,'message' => 'Retrieved successfully'], 200);
         
     }
 
@@ -49,8 +50,16 @@ class ProjectController extends Controller
      */
    public function show(Post $post)
     {
-        // return response(['post' => new ProjectResource($post), 'message' => 'Retrieved successfully'], 200);
+        return response(['post' => new ProjectResource($post), 'message' => 'Retrieved successfully'], 200);
     }
+
+
+    // public function getPosts($id)
+    // {
+
+    //     return Post::find($id);
+    //     // return response(['post' => new ProjectResource($post), 'message' => 'Retrieved successfully'], 200);
+    // }
 
     /**
      * Update the specified resource in storage.

@@ -35,7 +35,7 @@ class WebsiteController extends Controller
         JsonLd::addImage('https://www.bac.edu.my/wp-content/uploads/2018/10/b4l.png');
         
 
-        $categories = Category::orderBy('name', 'ASC')->where('is_published', '1')->get();
+        $categories = Category::orderBy('category_name', 'ASC')->where('is_published', '1')->get();
         $posts = Post::orderBy('id', 'DESC')->where('post_type', 'post')->where('is_published', '1')->paginate(5);
         $mostpopular = Post::get()->sortByDesc('views')->take(3);
         $recentpost = Post::get()->sortByDesc('created_at')->take(3);
@@ -74,7 +74,7 @@ class WebsiteController extends Controller
 
     public function category($slug)
     {
-        $category = Category::where('slug', $slug)->where('is_published', '1')->first();
+        $category = Category::where('category_slug', $slug)->where('is_published', '1')->first();
         if ($category) {
             $posts = $category->posts()->orderBy('posts.id', 'DESC')->where('is_published', '1')->paginate(5);
             return view('website.category', compact('category', 'posts'));

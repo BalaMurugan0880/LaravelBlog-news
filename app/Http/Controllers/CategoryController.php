@@ -28,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $mainModule = DB::table('mainmodule')->select('mainmodule.name','mainmodule.id')->get();
+        $mainModule = DB::table('mainmodule')->select('mainmodule.module_name','mainmodule.id')->get();
         return view('admin.category.create',compact('mainModule'));
     }
 
@@ -42,13 +42,13 @@ class CategoryController extends Controller
     {
         $this->validate($request, [
             'thumbnail' => 'required',
-            'name' => 'required|unique:categories',
+            'category_name' => 'required|unique:categories',
             
         ],
             [
                 'thumbnail.required' => 'Enter thumbnail url',
-                'name.required' => 'Enter name',
-                'name.unique' => 'Category already exist',
+                'category_name.required' => 'Enter name',
+                'category_namecategory_name.unique' => 'Category already exist',
                 
             ]);
 
@@ -56,8 +56,8 @@ class CategoryController extends Controller
         $category->mainModule_id = $request->mainModule_id;
         $category->thumbnail = $request->thumbnail;
         $category->user_id = Auth::id();
-        $category->name = $request->name;
-        $category->slug = str_slug($request->name);
+        $category->category_name = $request->category_name;
+        $category->category_slug = str_slug($request->category_name);
         $category->is_published = $request->is_published;
         $category->save();
 
@@ -99,19 +99,19 @@ class CategoryController extends Controller
     {
         $this->validate($request, [
             'thumbnail' => 'required',
-            'name' => 'required|unique:categories,name,' . $category->id,
+            'category_name' => 'required|unique:categories,category_name,' . $category->id,
         ],
             [
                 'thumbnail.required' => 'Enter thumbnail url',
-                'name.required' => 'Enter name',
-                'name.unique' => 'Category already exist',
+                'category_name.required' => 'Enter name',
+                'category_name.unique' => 'Category already exist',
             ]);
 
         $category->thumbnail = $request->thumbnail;
         $category->user_id = Auth::id();
-        $category->name = $request->name;
+        $category->category_name = $request->category_name;
         $category->mainModule_id = $request->mainModule_id;
-        $category->slug = str_slug($request->name);
+        $category->category_slug = str_slug($request->category_name);
         $category->is_published = $request->is_published;
         $category->save();
 

@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="site-heading">
-                        <h1>{{ $category->name }}</h1>
+                        <h1>{{ $category->category_name }}</h1>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                                 | <span class="post-category">
                             Category :
                                     @foreach($post->categories as $category)
-                                        <a href="{{ url('category/' . $category->slug) }}">{{ $category->name }}</a>,
+                                        <a href="{{ url('category/' . $category->category_slug) }}">{{ $category->category_name }}</a>,
                                     @endforeach
                         </span>
                             @endif

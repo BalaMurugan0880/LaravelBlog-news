@@ -9,11 +9,11 @@
 
                     <div class="card-body">
                         {!! Form::open(['route' => 'module.store']) !!}
-                        <div class="form-group @if($errors->has('name')) has-error @endif">
+                        <div class="form-group @if($errors->has('module_name')) has-error @endif">
                             {!! Form::label('Module Name') !!}
-                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
-                            @if ($errors->has('name'))
-                                <span class="help-block">{!! $errors->first('name') !!}</span>@endif
+                            {!! Form::text('module_name', null, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
+                            @if ($errors->has('module_name'))
+                                <span class="help-block">{!! $errors->first('module_name') !!}</span>@endif
                         </div>
 
                         {!! Form::submit('Create',['class' => 'btn btn-sm btn-primary']) !!}

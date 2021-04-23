@@ -16,7 +16,7 @@ class CreateMainmoduleTable extends Migration
         Schema::create('mainmodule', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('name')->unique();
+            $table->string('module_name')->unique();
             $table->timestamps();
         });
     }

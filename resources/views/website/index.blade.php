@@ -37,7 +37,7 @@
                                 | <span class="post-category">
                             Category :
                                     @foreach($post->categories as $category)
-                                        <a href="{{ url('category/' . $category->slug) }}"><span class="badge badge-primary">{{ $category->name }}</span></a>,
+                                        <a href="{{ url('category/' . $category->category_slug) }}"><span class="badge badge-primary">{{ $category->category_name }}</span></a>,
                                     @endforeach
                         </span>  
                             @endif | &nbsp;<i class="fa fa-eye"></i>&nbsp;<span>{{ $post->views}} Viewers</span>
@@ -57,7 +57,7 @@
                     <h2 class="category-title">Category</h2>
                     <ul class="category-list">
                         @foreach($categories as $category)
-                            <li><a href="{{ url('category/' . $category->slug) }}">{{ $category->name }}</a></li>
+                            <li><a href="{{ url('category/' . $category->category_slug) }}">{{ $category->category_name }}</a></li>
                         @endforeach
                     </ul>
                 </div>

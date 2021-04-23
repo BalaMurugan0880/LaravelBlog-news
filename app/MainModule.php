@@ -8,7 +8,7 @@ class MainModule extends Model
 {
 	protected $table = 'mainmodule';
 
-    protected $fillable = ['user_id','name'];
+    protected $fillable = ['user_id','module_name'];
     
 
     public function user()

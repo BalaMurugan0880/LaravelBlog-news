@@ -3,7 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ProjectController;
+use App\Http\Controllers\API\CategoryApiController;
 Use App\Post;
+use App\Category;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,6 +26,11 @@ Use App\Post;
 	// Route::apiResource('contacts', 'ContactController');
  // 	Route::apiResource('categories', 'CategoryController');
     Route::apiResource('posts', 'ProjectController', array("as" => "api"));
+    Route::apiResource('category', 'CategoryApiController', array("as" => "api"));
+
+//     Route::get('posts/{id}', function($id) {
+//     return Post::find($id);
+// })
  //    Route::apiResource('pages', 'PageController');
  //    Route::apiResource('module', 'mainModuleController');	
  //    Route::apiResource('galleries', 'GalleryController');

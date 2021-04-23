@@ -15,11 +15,11 @@
                         </div>
 
 
-                        <div class="form-group @if($errors->has('name')) has-error @endif">
+                        <div class="form-group @if($errors->has('module_name')) has-error @endif">
                             {!! Form::label('Name') !!}
-                            {!! Form::text('name', $module->name, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
-                            @if ($errors->has('name'))
-                                <span class="help-block">{!! $errors->first('name') !!}</span>@endif
+                            {!! Form::text('module_name', $module->module_name, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
+                            @if ($errors->has('module_name'))
+                                <span class="help-block">{!! $errors->first('module_name') !!}</span>@endif
                         </div>
 
 
