@@ -47,3 +47,8 @@ MAIL_ENCRYPTION=tls
 ```
 Need to create galleries folder under storage folder #important
 ```
+
+## Api Live Server
+```
+If certain or all api not displaying please run manually "composer require spatie/laravel-query-builder"
+```
