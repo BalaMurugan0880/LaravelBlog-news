@@ -42,3 +42,8 @@ MAIL_FROM_ADDRESS= //Your Gmail
 MAIL_FROM_NAME="${APP_NAME}"
 MAIL_ENCRYPTION=tls
 ```
+
+## Live Server Storage
+```
+Need to create galleries folder under storage folder #important
+```
