@@ -3,15 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Post;
-use App\Category;
-use App\CategoryPost;
 use Request;
-use App\Http\Resources\ProjectResource;
 use DB;
-use App\users;
+use App\MainModule;
 use Spatie\QueryBuilder\QueryBuilder;
-class CategoryApiController extends Controller
+
+class ModuleApiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,13 +17,11 @@ class CategoryApiController extends Controller
      */
     public function index(Request $request)
     {
-       
-        // $category = DB::table('categories')->join('mainmodule','categories.mainModule_id', '=', 'mainmodule.id')->select('categories.category_name','mainmodule.module_name')->get();
-        $category = QueryBuilder::for(Category::class)
-    ->allowedFilters(['mainModule_id'])
+         $mainmodule = QueryBuilder::for(MainModule::class)
+    ->allowedFilters(['id'])
     ->get();
 
-        return response(['category' => $category,'message' => 'Retrieved successfully'], 200);
+        return response(['mainmodule' => $mainmodule,'message' => 'Retrieved successfully'], 200);    
     }
 
     /**
@@ -56,10 +51,9 @@ class CategoryApiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(MainModule $mainmodule)
     {
-
-        return response(['category' => $category,'message' => 'Retrieved successfully'], 200);
+        return response(['mainmodule' => $mainmodule,'message' => 'Retrieved successfully'], 200);
     }
 
     /**

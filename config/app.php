@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
 
+
         /*
          * Package Service Providers...
          */
@@ -176,6 +177,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+       
 
     ],
 

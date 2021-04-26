@@ -20,7 +20,9 @@
         "laravel/passport": "^9.0",
         "laravel/tinker": "^2.0",
         "laravelcollective/html": "^6.1",
-        "madeitbelgium/seo-analyzer": "^0.6"
+        "madeitbelgium/seo-analyzer": "^0.6",
+        "spatie/laravel-query-builder": "^3.3",
+        "unlu/laravel-api-query-builder": "~1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

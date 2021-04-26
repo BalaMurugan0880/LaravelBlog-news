@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ProjectController;
 use App\Http\Controllers\API\CategoryApiController;
+use App\Http\Controllers\API\ModuleApiController;
 Use App\Post;
 use App\Category;
 /*
@@ -27,6 +28,8 @@ use App\Category;
  // 	Route::apiResource('categories', 'CategoryController');
     Route::apiResource('posts', 'ProjectController', array("as" => "api"));
     Route::apiResource('category', 'CategoryApiController', array("as" => "api"));
+    Route::apiResource('mainmodule', 'ModuleApiController', array("as" => "api"));
+
 
 //     Route::get('posts/{id}', function($id) {
 //     return Post::find($id);

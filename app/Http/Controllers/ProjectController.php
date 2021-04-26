@@ -9,6 +9,7 @@ use App\CategoryPost;
 use Illuminate\Http\Request;
 use App\Http\Resources\ProjectResource;
 use DB;
+use Spatie\QueryBuilder\QueryBuilder;
 class ProjectController extends Controller
 {
     /**
@@ -18,16 +19,20 @@ class ProjectController extends Controller
      */
     public function index()
     {   
-        $post = Post::orderBy('id', 'DESC')->where('post_type', 'post')->where('is_published', '1')->get();
-        $category = Category::orderBy('id', 'DESC')->where('is_published', '1')->get();
-        $categorypost = CategoryPost::orderBy('id', 'DESC')->get();
+        // $post = Post::orderBy('id', 'DESC')->where('post_type', 'post')->where('is_published', '1')->get();
+        // $category = Category::orderBy('id', 'DESC')->where('is_published', '1')->get();
+        // $categorypost = CategoryPost::orderBy('id', 'DESC')->get();
 
-        $test = DB::table('posts')->join('category_posts','category_posts.post_id', '=', 'posts.id')->join('categories','category_posts.category_id', '=', 'categories.id')->join('mainmodule','categories.mainModule_id', '=' , 'mainmodule.id')->select('posts.title','categories.category_name','category_posts.category_id','mainmodule.module_name')->get();
+        // $test = DB::table('posts')->join('category_posts','category_posts.post_id', '=', 'posts.id')->join('categories','category_posts.category_id', '=', 'categories.id')->join('mainmodule','categories.mainModule_id', '=' , 'mainmodule.id')->select('posts.title','categories.category_name','category_posts.category_id','mainmodule.module_name')->get();
+
+         $post = QueryBuilder::for(Post::class)
+    ->allowedFilters(['mainModule_id','id'])
+    ->get();
 
 
 
 
-        return response(['test' => $test,'message' => 'Retrieved successfully'], 200);
+        return response(['post' => $post,'message' => 'Retrieved successfully'], 200);
         
     }
 
