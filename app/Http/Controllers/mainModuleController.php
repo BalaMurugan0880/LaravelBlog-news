@@ -15,7 +15,7 @@ class mainModuleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
        $mainModule = MainModule::orderBy('id', 'DESC')->get();
         return view('admin.module.index', compact('mainModule'));
