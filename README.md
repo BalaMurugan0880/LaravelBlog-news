@@ -42,3 +42,13 @@ MAIL_FROM_ADDRESS= //Your Gmail
 MAIL_FROM_NAME="${APP_NAME}"
 MAIL_ENCRYPTION=tls
 ```
+
+## Live Server Storage
+```
+Need to create galleries folder under storage folder #important
+```
+
+## Api Live Server
+```
+If certain or all api not displaying please run manually "composer require spatie/laravel-query-builder"
+```
