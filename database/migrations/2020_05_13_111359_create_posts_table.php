@@ -23,6 +23,7 @@ class CreatePostsTable extends Migration
             $table->string('sub_title')->nullable();
             $table->text('details');
             $table->string('post_type')->nullable();
+            $table->string('thumbnail_id')->nullable();//for xml get featured image only
             $table->enum('is_published', ['1', '0']);
             $table->timestamps();
         });

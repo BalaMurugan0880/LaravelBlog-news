@@ -26,7 +26,7 @@ class ProjectController extends Controller
         // $test = DB::table('posts')->join('category_posts','category_posts.post_id', '=', 'posts.id')->join('categories','category_posts.category_id', '=', 'categories.id')->join('mainmodule','categories.mainModule_id', '=' , 'mainmodule.id')->select('posts.title','categories.category_name','category_posts.category_id','mainmodule.module_name')->get();
 
          $post = QueryBuilder::for(Post::class)
-    ->allowedFilters(['mainModule_id','id'])
+    ->allowedFilters(['mainModule_id','id','is_published'])
     ->get();
 
 

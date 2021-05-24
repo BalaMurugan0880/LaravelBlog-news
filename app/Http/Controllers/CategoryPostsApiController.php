@@ -11,6 +11,7 @@ use App\Http\Resources\ProjectResource;
 use DB;
 use App\users;
 use Spatie\QueryBuilder\QueryBuilder;
+use Spatie\QueryBuilder\AllowedFilter;
 class CategoryPostsApiController extends Controller
 {
     /**
@@ -21,7 +22,7 @@ class CategoryPostsApiController extends Controller
     public function index(Request $request)
     {
         $categoryposts = QueryBuilder::for(CategoryPost::class)
-    ->allowedFilters(['category_id','post_id'])
+    ->allowedFilters([AllowedFilter::exact('post_id')])
     ->get();
 
         return response(['categoryposts' => $categoryposts,'message' => 'Retrieved successfully'], 200);

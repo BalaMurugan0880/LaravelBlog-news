@@ -11,6 +11,7 @@ use App\Http\Resources\ProjectResource;
 use DB;
 use App\users;
 use Spatie\QueryBuilder\QueryBuilder;
+use Spatie\QueryBuilder\AllowedFilter;
 class CategoryApiController extends Controller
 {
     /**
@@ -23,7 +24,7 @@ class CategoryApiController extends Controller
        
         // $category = DB::table('categories')->join('mainmodule','categories.mainModule_id', '=', 'mainmodule.id')->select('categories.category_name','mainmodule.module_name')->get();
         $category = QueryBuilder::for(Category::class)
-    ->allowedFilters(['mainModule_id','id'])
+    ->allowedFilters([AllowedFilter::exact('id'),AllowedFilter::exact('mainModule_id'),])
     ->get();
 
         return response(['category' => $category,'message' => 'Retrieved successfully'], 200);

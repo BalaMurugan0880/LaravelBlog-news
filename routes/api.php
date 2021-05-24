@@ -27,8 +27,6 @@ use App\Category;
 // });
 
 
-	// Route::apiResource('contacts', 'ContactController');
- // 	Route::apiResource('categories', 'CategoryController');
     Route::apiResource('posts', 'ProjectController', array("as" => "api"));
     Route::apiResource('category', 'CategoryApiController', array("as" => "api"));
     Route::apiResource('mainmodule', 'ModuleApiController', array("as" => "api"));
@@ -38,11 +36,5 @@ use App\Category;
 
 
 
-//     Route::get('posts/{id}', function($id) {
-//     return Post::find($id);
-// })
- //    Route::apiResource('pages', 'PageController');
- //    Route::apiResource('module', 'mainModuleController');	
- //    Route::apiResource('galleries', 'GalleryController');
- //    Route::apiResource('user', 'UserTableController');
+
 
