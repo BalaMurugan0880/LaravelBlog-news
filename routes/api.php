@@ -8,8 +8,6 @@ use App\Http\Controllers\API\ModuleApiController;
 use App\Http\Controllers\API\CategoryPostsApiController;
 use App\Http\Controllers\API\UserApiController;
 
-Use App\Post;
-use App\Category;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,12 +18,6 @@ use App\Category;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-// Route::get('post', function() {
-//     // If the Content-Type and Accept headers are set to 'application/json', 
-//     // this will return a JSON structure. This will be cleaned up later.
-//     return Post::all();
-// });
-
 
     Route::apiResource('posts', 'ProjectController', array("as" => "api"));
     Route::apiResource('category', 'CategoryApiController', array("as" => "api"));

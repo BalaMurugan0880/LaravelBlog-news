@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Post;
 use App\Category;
-use App\CategoryPost;
 use Request;
 use App\Http\Resources\ProjectResource;
 use DB;
@@ -22,7 +20,6 @@ class CategoryApiController extends Controller
     public function index(Request $request)
     {
        
-        // $category = DB::table('categories')->join('mainmodule','categories.mainModule_id', '=', 'mainmodule.id')->select('categories.category_name','mainmodule.module_name')->get();
         $category = QueryBuilder::for(Category::class)
     ->allowedFilters([AllowedFilter::exact('id'),AllowedFilter::exact('mainModule_id'),])
     ->get();
