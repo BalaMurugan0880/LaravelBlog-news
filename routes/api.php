@@ -7,6 +7,8 @@ use App\Http\Controllers\API\CategoryApiController;
 use App\Http\Controllers\API\ModuleApiController;
 use App\Http\Controllers\API\CategoryPostsApiController;
 use App\Http\Controllers\API\UserApiController;
+use App\Http\Controllers\API\MobileApiController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,7 @@ use App\Http\Controllers\API\UserApiController;
 */
 
     Route::apiResource('posts', 'ProjectController', array("as" => "api"));
+    Route::apiResource('mobilepost', 'MobileApiController', array("as" => "api"));
     Route::apiResource('category', 'CategoryApiController', array("as" => "api"));
     Route::apiResource('mainmodule', 'ModuleApiController', array("as" => "api"));
     Route::apiResource('categoryposts', 'CategoryPostsApiController', array("as" => "api"));

@@ -49,14 +49,6 @@ class ProjectController extends Controller
         return response(['post' => new ProjectResource($post), 'message' => 'Retrieved successfully'], 200);
     }
 
-
-    // public function getPosts($id)
-    // {
-
-    //     return Post::find($id);
-    //     // return response(['post' => new ProjectResource($post), 'message' => 'Retrieved successfully'], 200);
-    // }
-
     /**
      * Update the specified resource in storage.
      *
