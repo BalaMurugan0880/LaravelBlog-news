@@ -1,4 +1,4 @@
-## Build Blog CMS (Content Management System) with Laravel 7
+## Build Laravel Blog (Content Management System) with Laravel 7
 
 ## Clone this repo
 ```
